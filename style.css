@@ -75,7 +75,7 @@ body {
 }
 
 .section-padding {
-    padding: 10rem 0;
+    padding: 5rem 0;
 }
 
 .dark-bg {
@@ -535,7 +535,7 @@ footer {
 /* Responsive */
 @media (max-width: 900px) {
     .section-padding {
-        padding: 5rem 0; /* Massively reduce black gaps between sections */
+        padding: 3rem 0; /* Massively reduce black gaps between sections */
     }
 
     .expertise-grid {
