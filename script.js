@@ -1,61 +1,166 @@
-// Navigation Background on Scroll
-const navbar = document.querySelector('.navbar');
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
+// Custom Cursor
+const cursor = document.querySelector('.cursor');
+const follower = document.querySelector('.cursor-follower');
+const links = document.querySelectorAll('a, button, .magnetic, .menu-btn');
+
+document.addEventListener('mousemove', (e) => {
+    // Immediate cursor
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    
+    // Follower cursor with slight delay
+    follower.style.left = e.clientX + 'px';
+    follower.style.top = e.clientY + 'px';
 });
 
-// Mobile Menu Toggle
+links.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+        cursor.classList.add('hover');
+        follower.classList.add('hover');
+    });
+    link.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hover');
+        follower.classList.remove('hover');
+    });
+});
+
+// Magnetic Buttons Effect
+const magnetics = document.querySelectorAll('.magnetic');
+magnetics.forEach(btn => {
+    btn.addEventListener('mousemove', function(e) {
+        const position = btn.getBoundingClientRect();
+        const x = e.pageX - position.left - position.width / 2;
+        const y = e.pageY - position.top - position.height / 2;
+        
+        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+    });
+    
+    btn.addEventListener('mouseout', function() {
+        btn.style.transform = 'translate(0px, 0px)';
+    });
+});
+
+// Overlay Menu Toggle
+const menuBtn = document.querySelector('.menu-btn');
+const overlayMenu = document.querySelector('.overlay-menu');
 const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+const menuLinks = document.querySelectorAll('.overlay-menu a');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
+menuBtn.addEventListener('click', () => {
+    overlayMenu.classList.toggle('active');
+    // Animate hamburger to X
+    if (overlayMenu.classList.contains('active')) {
+        hamburger.children[0].style.transform = 'translateY(4px) rotate(45deg)';
+        hamburger.children[1].style.transform = 'translateY(-4px) rotate(-45deg)';
+    } else {
+        hamburger.children[0].style.transform = 'translateY(0) rotate(0)';
+        hamburger.children[1].style.transform = 'translateY(0) rotate(0)';
+    }
 });
 
-// Close mobile menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(n => n.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navLinks.classList.remove('active');
-}));
+menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        overlayMenu.classList.remove('active');
+        hamburger.children[0].style.transform = 'translateY(0) rotate(0)';
+        hamburger.children[1].style.transform = 'translateY(0) rotate(0)';
+    });
+});
 
-// Scroll Reveal Animation
-function reveal() {
-    var reveals = document.querySelectorAll('.reveal');
 
-    for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 150;
+// === GSAP Animations === //
 
-        if (elementTop < windowHeight - elementVisible) {
-            reveals[i].classList.add('active');
-        }
+// 1. Hero Reveal
+const heroTl = gsap.timeline();
+heroTl.to('.hero-bg', {
+    scale: 1.05,
+    duration: 2,
+    ease: "power3.out"
+})
+.to('.hero-title span span', {
+    y: '0%',
+    duration: 1,
+    stagger: 0.2,
+    ease: "power4.out"
+}, "-=1.5")
+.to('.hero-subtitle', {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    ease: "power2.out"
+}, "-=0.8");
+
+// Hero Parallax on Scroll
+gsap.to('.hero-bg', {
+    y: "30%",
+    ease: "none",
+    scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
     }
-}
+});
 
-window.addEventListener('scroll', reveal);
-// Trigger reveal on load
-reveal();
+// 2. Text Reveal (About Section)
+gsap.to('.reveal-text', {
+    backgroundPositionX: '0%',
+    ease: "none",
+    scrollTrigger: {
+        trigger: ".about",
+        start: "top 70%",
+        end: "bottom 80%",
+        scrub: 1
+    }
+});
 
-// Form Submission Prevention (for demo purposes)
-document.getElementById('contact-form').addEventListener('submit', function(e) {
+// 3. Scrolling Background Text (Expertise)
+gsap.to('.scrolling-text h2', {
+    x: "-30%",
+    ease: "none",
+    scrollTrigger: {
+        trigger: ".expertise",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1
+    }
+});
+
+// 4. Cards Stagger Reveal
+gsap.from('.expertise-card', {
+    y: 100,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.2,
+    ease: "power3.out",
+    scrollTrigger: {
+        trigger: ".expertise-grid",
+        start: "top 80%"
+    }
+});
+
+// 5. Gallery Image Parallax
+const galleryItems = document.querySelectorAll('.parallax-img img');
+galleryItems.forEach(img => {
+    gsap.to(img, {
+        y: "10%",
+        ease: "none",
+        scrollTrigger: {
+            trigger: img.parentElement,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+        }
+    });
+});
+
+// Form submission prevention (Demo)
+document.querySelector('.premium-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = this.querySelector('button');
-    const originalText = btn.textContent;
-    btn.textContent = 'Message Sent!';
-    btn.style.background = '#4CAF50';
-    btn.style.color = '#fff';
-    
-    setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-        btn.style.color = '';
-        this.reset();
-    }, 3000);
+    btn.innerHTML = 'Message Sent <span>✓</span>';
+    btn.style.background = '#e1c699';
+    btn.style.color = '#020405';
 });

@@ -3,109 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Byond | Travel, Photography & Marketing</title>
+    <title>Byond | Global Visuals & Marketing</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- GSAP for premium animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navigation -->
     <nav class="navbar">
-        <div class="logo">Byond.</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#contact" class="btn-primary">Get in Touch</a></li>
-        </ul>
-        <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+        <div class="logo">BYOND.</div>
+        <div class="menu-btn">
+            <span class="menu-text">Menu</span>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
+    <div class="overlay-menu">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
     <header class="hero">
-        <div class="hero-content fade-in">
-            <h1>Go Byond.</h1>
-            <p>Capturing the world differently through photography, videography, and global marketing.</p>
-            <a href="#gallery" class="btn-primary large">Explore My Work</a>
+        <div class="hero-bg" style="background-image: url('images/hero.png');"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="line"><span>GO</span></span>
+                <span class="line"><span>BYOND.</span></span>
+            </h1>
+            <p class="hero-subtitle">Elevating brands through global travel, photography, and cinematic storytelling.</p>
         </div>
+        <div class="scroll-indicator">Scroll to explore</div>
     </header>
 
-    <section id="about" class="about">
-        <div class="about-container reveal">
-            <h2>Beyond the Horizon</h2>
-            <p>I travel the globe turning breathtaking moments into compelling stories. With a deep passion for visual excellence, I specialize in high-end photography, cinematic videography, and digital marketing that elevates brands and captures imaginations.</p>
-        </div>
-    </section>
-
-    <section id="services" class="services">
-        <div class="services-header reveal">
-            <h2>What I Do</h2>
-            <p>Crafting visual narratives across the globe.</p>
-        </div>
-        <div class="cards-container">
-            <div class="card reveal">
-                <div class="card-icon">📸</div>
-                <h3>Photography</h3>
-                <p>From towering peaks to vibrant city streets, I freeze time to capture the essence of every location with stunning clarity.</p>
-            </div>
-            <div class="card reveal">
-                <div class="card-icon">🎥</div>
-                <h3>Videography</h3>
-                <p>Cinematic storytelling that moves. I create dynamic visual experiences that immerse your audience in the journey.</p>
-            </div>
-            <div class="card reveal">
-                <div class="card-icon">🌍</div>
-                <h3>Global Marketing</h3>
-                <p>Leveraging visual assets to build brands. I merge creative content with strategic marketing to drive real impact.</p>
+    <!-- About / Mission -->
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <h2 class="section-title">The Mission</h2>
+            <div class="about-text-wrap">
+                <p class="large-text reveal-text">
+                    My core mission is traveling the globe, discovering unique locations, and executing high-level marketing, photography, and videography. I don't just capture moments; I craft visual legacies.
+                </p>
             </div>
         </div>
     </section>
 
-    <section id="gallery" class="gallery">
-        <h2 class="reveal">The World Through My Lens</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item reveal">
-                <img src="images/city.png" alt="Vibrant City Street">
-                <div class="overlay">
-                    <span>Urban Exploration</span>
+    <!-- Expertise Section -->
+    <section id="expertise" class="expertise section-padding dark-bg">
+        <div class="scrolling-text">
+            <h2>PHOTOGRAPHY • VIDEOGRAPHY • MARKETING • </h2>
+        </div>
+        <div class="container">
+            <div class="expertise-grid">
+                <div class="expertise-card magnetic">
+                    <div class="card-inner">
+                        <span class="number">01</span>
+                        <h3>Photography</h3>
+                        <p>High-resolution, awe-inspiring imagery that freezes time and captures the raw essence of every destination.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="gallery-item reveal">
-                <img src="images/island.png" alt="Tropical Island">
-                <div class="overlay">
-                    <span>Island Paradises</span>
+                <div class="expertise-card magnetic">
+                    <div class="card-inner">
+                        <span class="number">02</span>
+                        <h3>Videography</h3>
+                        <p>Cinematic storytelling that moves. I create dynamic visual experiences that immerse your audience.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="gallery-item reveal">
-                <img src="images/hero.png" alt="Epic Ocean Cliff">
-                <div class="overlay">
-                    <span>Edge of the World</span>
+                <div class="expertise-card magnetic">
+                    <div class="card-inner">
+                        <span class="number">03</span>
+                        <h3>Marketing</h3>
+                        <p>Strategic brand elevation. I merge breathtaking content with global marketing strategies to drive real impact.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact">
-        <div class="contact-container reveal">
-            <h2>Let's Create Together</h2>
-            <p>Ready to take your brand or project beyond expectations? Drop me a message.</p>
-            <form id="contact-form" class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Tell me about your project..." rows="5" required></textarea>
-                <button type="submit" class="btn-primary submit-btn">Send Message</button>
-            </form>
-            <div class="contact-info">
-                <p>Email: hello@byondtravel.com</p>
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section-padding">
+        <div class="container">
+            <h2 class="section-title">Visual Excellence</h2>
+            <div class="masonry-grid">
+                <div class="masonry-item tall parallax-img">
+                    <img src="images/city.png" alt="Exotic City">
+                    <div class="item-overlay">Urban Exploration</div>
+                </div>
+                <div class="masonry-item wide parallax-img">
+                    <img src="images/desert.png" alt="Desert Dunes">
+                    <div class="item-overlay">Endless Horizons</div>
+                </div>
+                <div class="masonry-item parallax-img">
+                    <img src="images/island.png" alt="Tropical Island">
+                    <div class="item-overlay">Island Paradise</div>
+                </div>
+                <div class="masonry-item large parallax-img">
+                    <img src="images/ice.png" alt="Frozen Waterfall">
+                    <div class="item-overlay">Winter Escapes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section-padding dark-bg">
+        <div class="container">
+            <h2 class="massive-text">LET'S<br>CONNECT.</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <p>Ready to build something exceptional?</p>
+                    <a href="mailto:hello@byondtravel.com" class="email-link magnetic">hello@byondtravel.com</a>
+                </div>
+                <form class="premium-form">
+                    <div class="input-group">
+                        <input type="text" placeholder="What's your name?" required>
+                        <span class="line-focus"></span>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" placeholder="Your email address" required>
+                        <span class="line-focus"></span>
+                    </div>
+                    <div class="input-group">
+                        <textarea placeholder="Tell me about your project..." rows="3" required></textarea>
+                        <span class="line-focus"></span>
+                    </div>
+                    <button type="submit" class="btn-submit magnetic">Send Inquiry <span>→</span></button>
+                </form>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Byond Travel. All rights reserved.</p>
+        <div class="container footer-content">
+            <div class="logo">BYOND.</div>
+            <p>&copy; 2026 Byond Travel. Unapologetic Visual Excellence.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
