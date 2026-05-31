@@ -534,8 +534,26 @@ footer {
 
 /* Responsive */
 @media (max-width: 900px) {
+    .section-padding {
+        padding: 5rem 0; /* Massively reduce black gaps between sections */
+    }
+
+    .expertise-grid {
+        margin-top: 2rem;
+        gap: 1.5rem;
+    }
+
+    .massive-text {
+        margin-bottom: 2rem;
+    }
+
+    .scrolling-text {
+        display: none; /* Can cause overflow/black gaps on mobile */
+    }
+
     .contact-wrapper {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
     
     .masonry-item:nth-child(1),
