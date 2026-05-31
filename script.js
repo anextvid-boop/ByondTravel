@@ -130,14 +130,15 @@ gsap.to('.scrolling-text h2', {
 
 // 4. Cards Stagger Reveal
 gsap.from('.expertise-card', {
-    y: 100,
+    y: 50,
     opacity: 0,
     duration: 1,
     stagger: 0.2,
     ease: "power3.out",
     scrollTrigger: {
-        trigger: ".expertise-grid",
-        start: "top 80%"
+        trigger: ".expertise",
+        start: "top 90%",
+        toggleActions: "play none none reverse"
     }
 });
 
