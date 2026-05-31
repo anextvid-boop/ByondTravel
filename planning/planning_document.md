@@ -19,7 +19,7 @@
    - Subheadline: "Photography, Videography & Global Marketing."
    - Call-to-Action (CTA) button: "Explore My Work"
 2. **About / Mission:**
-   - Brief section detailing the travel lifestyle and the professional services offered (Marketing, Photo, Video).
+   - **Mission Details:** The core mission is traveling globally, getting to different and unique locations, and executing high-level marketing, photography, and videography.
 3. **Services:**
    - 3-column layout highlighting Photography, Videography, and Marketing capabilities with sleek icons or background images.
 4. **Visual Gallery:**
