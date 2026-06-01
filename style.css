@@ -364,6 +364,12 @@ h1, h2, h3 {
 .masonry-item:nth-child(2) { grid-column: span 7; grid-row: span 1; }
 .masonry-item:nth-child(3) { grid-column: span 4; grid-row: span 2; }
 .masonry-item:nth-child(4) { grid-column: span 3; grid-row: span 2; }
+.masonry-item:nth-child(5) { grid-column: span 5; grid-row: span 1; }
+.masonry-item:nth-child(6) { grid-column: span 7; grid-row: span 2; }
+.masonry-item:nth-child(7) { grid-column: span 5; grid-row: span 1; }
+.masonry-item:nth-child(8) { grid-column: span 5; grid-row: span 2; }
+.masonry-item:nth-child(9) { grid-column: span 4; grid-row: span 1; }
+.masonry-item:nth-child(10) { grid-column: span 3; grid-row: span 1; }
 
 .item-overlay {
     position: absolute;
@@ -574,12 +580,9 @@ footer {
         font-size: clamp(1.2rem, 5vw, 1.5rem);
     }
     
-    .masonry-item:nth-child(1),
-    .masonry-item:nth-child(2),
-    .masonry-item:nth-child(3),
-    .masonry-item:nth-child(4) {
-        grid-column: span 12;
-        grid-row: span 1;
+    .masonry-item {
+        grid-column: span 12 !important;
+        grid-row: span 1 !important;
     }
     
     .cursor, .cursor-follower {
