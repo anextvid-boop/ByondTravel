@@ -2,7 +2,7 @@
     --bg-color: #05080a; /* Deep near-black blue */
     --bg-dark: #020405;
     --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.6);
+    --text-secondary: rgba(255, 255, 255, 0.8);
     --accent: #e1c699; /* Sand / Earth */
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -556,6 +556,22 @@ footer {
     .contact-wrapper {
         grid-template-columns: 1fr;
         gap: 2rem;
+        text-align: center;
+    }
+
+    .massive-text {
+        text-align: center;
+        font-size: clamp(3rem, 12vw, 4rem);
+        margin-bottom: 2rem;
+    }
+
+    .btn-submit {
+        align-self: center;
+        margin: 0 auto;
+    }
+
+    .email-link {
+        font-size: clamp(1.2rem, 5vw, 1.5rem);
     }
     
     .masonry-item:nth-child(1),
