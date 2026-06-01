@@ -116,30 +116,22 @@ gsap.to('.reveal-text', {
     }
 });
 
-// 3. Scrolling Background Text (Expertise)
-gsap.to('.scrolling-text h2', {
-    x: "-30%",
-    ease: "none",
-    scrollTrigger: {
-        trigger: ".expertise",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1
-    }
-});
+// 3 & 4. Horizontal Pinned Scroll (Expertise)
+let mm = gsap.matchMedia();
 
-// 4. Cards Stagger Reveal
-gsap.from('.expertise-card', {
-    y: 50,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.2,
-    ease: "power3.out",
-    scrollTrigger: {
-        trigger: ".expertise",
-        start: "top 90%",
-        toggleActions: "play none none reverse"
-    }
+mm.add("(min-width: 901px)", () => {
+    let panels = gsap.utils.toArray(".horizontal-panel");
+    gsap.to(panels, {
+        xPercent: -100 * (panels.length - 1),
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".expertise-container",
+            pin: true,
+            scrub: 1,
+            snap: 1 / (panels.length - 1),
+            end: () => "+=" + document.querySelector(".expertise-container").offsetWidth
+        }
+    });
 });
 
 // 5. Gallery Image Parallax

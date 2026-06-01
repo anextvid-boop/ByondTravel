@@ -286,70 +286,49 @@ h1, h2, h3 {
     color: transparent;
 }
 
-/* Expertise */
-.expertise {
-    position: relative;
+/* Horizontal Expertise Section */
+.expertise-container {
+    width: 100%;
     overflow: hidden;
 }
 
-.scrolling-text {
-    position: absolute;
-    top: 10%;
-    left: 0;
-    width: 200%;
-    opacity: 0.03;
-    pointer-events: none;
-    z-index: 0;
+.horizontal-scroll-wrapper {
+    display: flex;
+    width: 300vw; /* 3 panels */
+    height: 100vh;
 }
 
-.scrolling-text h2 {
-    font-size: 15vw;
-    white-space: nowrap;
+.horizontal-panel {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
 }
 
-.expertise-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-    position: relative;
-    z-index: 1;
-    margin-top: 5rem;
-}
-
-.expertise-card {
-    padding: 3rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    transition: all 0.3s ease;
-}
-
-.expertise-card:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(225, 198, 153, 0.5);
-}
-
-.card-inner {
-    pointer-events: none; /* Let magnetic effect work properly */
+.panel-content {
+    max-width: 900px;
 }
 
 .number {
     font-family: var(--font-heading);
-    font-size: 3rem;
+    font-size: clamp(4rem, 8vw, 8rem);
     font-weight: 900;
     color: transparent;
-    -webkit-text-stroke: 1px var(--text-secondary);
+    -webkit-text-stroke: 2px var(--accent);
     display: block;
-    margin-bottom: 2rem;
-}
-
-.expertise-card h3 {
-    font-size: 1.8rem;
     margin-bottom: 1rem;
+    line-height: 1;
 }
 
-.expertise-card p {
+.panel-content h3 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1.5rem;
+}
+
+.panel-content p {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
     color: var(--text-secondary);
     line-height: 1.6;
 }
@@ -538,18 +517,23 @@ footer {
         padding: 3rem 0; /* Massively reduce black gaps between sections */
     }
 
-    .expertise-grid {
-        margin-top: 2rem;
-        gap: 1.5rem;
+    .horizontal-scroll-wrapper {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+    }
+    
+    .horizontal-panel {
+        width: 100%;
+        height: auto;
+        padding: 4rem 5%;
     }
 
     .massive-text {
         margin-bottom: 2rem;
     }
 
-    .scrolling-text {
-        display: none; /* Can cause overflow/black gaps on mobile */
-    }
+
 
     .contact-wrapper {
         grid-template-columns: 1fr;
